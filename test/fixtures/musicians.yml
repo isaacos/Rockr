@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  instrument: MyString
+  description: MyString
+  time_for_music: 1
+
+two:
+  name: MyString
+  instrument: MyString
+  description: MyString
+  time_for_music: 1
