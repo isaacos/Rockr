@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <%  @bands.each do |band|%>
+    <%= link_to band.band_name, band_path(band) %>
+    <% end %>
+
+  </body>
+</html>

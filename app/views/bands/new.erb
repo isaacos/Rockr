@@ -1,0 +1,11 @@
+<%= form_for @band do |f| %>
+  <%= f.label :band_name %>
+  <%= f.text_field :band_name %>
+  <%= f.label :tours %>
+  <%= f.check_box :tours %>
+  <%= f.label :logo %>
+  <%= f.text_field :logo %>
+  <%= f.collection_check_boxes :musician_ids, Musician.all, :id, :name %>
+  <%= f.submit "Make Ya Band" %>
+
+<% end %>

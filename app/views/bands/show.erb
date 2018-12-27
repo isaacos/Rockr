@@ -1,0 +1,7 @@
+<%= @band.band_name %>
+<%= @band.tours %>
+<%= @band.logo %>
+
+<% @band.musicians.each do |musician| %>
+<%= link_to musician.name, musician_path(musician) %>
+<% end %>

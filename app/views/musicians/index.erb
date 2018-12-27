@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <% @musicians.each do |musician| %>
+    <%= link_to musician.name, musician_path(musician) %><br>
+    <% end %>
+
+  </body>
+</html>

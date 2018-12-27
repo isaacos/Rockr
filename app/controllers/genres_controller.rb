@@ -18,6 +18,3 @@ class GenresController < ApplicationController
     params.require(:genre).permit(:genre_name, :description)
   end
 end
-
-# t.string "genre_name"
-# t.string "description"
