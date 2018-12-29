@@ -8,7 +8,16 @@
 
     <% @musicians.each do |musician| %>
     <%= link_to musician.name, musician_path(musician) %><br>
-    <% end %>
+    <% end %><br>
+
+    <h3>Search by</h3>
+
+  <%= form_tag(musicians_path, method: :get) do %>
+  Instrument <%= text_field_tag :instrument_search%>
+  Genre <%= select :genre, :genre_search, Genre.all.collect {|p| [ p.genre_name]}, {include_blank: true}%>
+  <%= submit_tag 'Search'  %>
+<% end %>
+
 
   </body>
 </html>

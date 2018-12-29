@@ -7,6 +7,7 @@
   <%= f.text_field :description %>
   <%= f.label :time_for_music %>
   <%= f.number_field :time_for_music %>
+  <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name %>
   <%= f.submit "Submit" %>
 
 <% end %>
