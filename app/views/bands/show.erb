@@ -5,3 +5,16 @@
 <% @band.musicians.each do |musician| %>
 <%= link_to musician.name, musician_path(musician) %>
 <% end %>
+
+
+<%= form_for @review do |f| %>
+  <%=f.collection_select :band_id, [@band], :id, :band_name%>
+  <%= f.number_field :stars, :step => 0.5 %>
+  <%= f.text_field :comment %>
+  <%= f.submit %>
+<% end %>
+
+<% @band.reviews.each do |review| %>
+<%= review.stars %><br>
+<%= review.comment %><br>
+<% end %>

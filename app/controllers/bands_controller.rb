@@ -11,6 +11,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
+    @review = Review.new(band_id: params[:id])
   end
 
   def index

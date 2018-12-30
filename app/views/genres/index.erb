@@ -6,9 +6,8 @@
   </head>
   <body>
 
-    <%  @bands.each do |band|%>
-    <%= link_to band.band_name, band_path(band) %>
-    <%= band.average_rating %>
+    <%  @genres.each do |genre|%>
+    <%= link_to genre.genre_name, genre_path(genre) %><br>
     <% end %>
 
   </body>
