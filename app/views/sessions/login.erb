@@ -1,0 +1,5 @@
+<%= form_for (:session, url: login_path) do |f| %>
+  <%= render "shared/errors", object: (:session, login_path) %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.submit "Log in" %>
+<% end %>

@@ -4,6 +4,9 @@ class Musician < ApplicationRecord
   has_many :genres, through: :genre_musicians
   has_many :bands, through: :musician_bands
 
+  validates :name, presence: true
+  validates :instrument, presence: true
+
   def instrument_capitalize
     instrument = self.instrument.split.map(&:capitalize).join(' ')
     self.instrument = instrument

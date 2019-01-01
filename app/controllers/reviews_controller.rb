@@ -2,7 +2,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.create(review_params)
-    redirect_to bands_path(@review)
+    if @review.valid?
+      redirect_to band_path(@review.band)
+    else
+
+      @errors = @review.errors.full_messages
+      byebug
+      redirect_to band_path(@review.band)
+    end
   end
 
   private

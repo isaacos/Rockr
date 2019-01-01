@@ -4,14 +4,33 @@ class MusiciansController < ApplicationController
     @musician = Musician.new
   end
 
-  def login
-  end
-
   def create
     @musician = Musician.new(musician_params)
-    @musician.instrument_capitalize
-    @musician.save
-    redirect_to musician_path(@musician)
+    if @musician.valid?
+      @musician.instrument_capitalize
+      @musician.save
+      redirect_to musician_path(@musician)
+    else
+      @errors = @musician.errors.full_messages
+      render :new
+    end
+  end
+
+  def edit
+    @musician = Musician.find(params[:id])
+  end
+
+  def update
+    @musician = Musician.find(params[:id])
+    @musician.update(musician_params)
+    if @musician.valid?
+      @musician.instrument_capitalize
+      @musician.save
+      redirect_to musician_path(@musician)
+    else
+      @errors = @musician.errors.full_messages
+      render :edit
+    end
   end
 
   def show

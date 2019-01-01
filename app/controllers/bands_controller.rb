@@ -9,6 +9,16 @@ class BandsController < ApplicationController
     redirect_to band_path(@band)
   end
 
+  def edit
+    @band = Band.find(params[:id])
+  end
+
+  def update
+    @band = Band.find(params[:id])
+    @band.update(band_params)
+    redirect_to band_path(@band)
+  end
+
   def show
     @band = Band.find(params[:id])
     @review = Review.new(band_id: params[:id])

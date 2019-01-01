@@ -5,6 +5,13 @@
     <title></title>
   </head>
   <body>
+    <ul>
+    <% if @error %>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    <% end %>
+    </ul>
     <h1>Sorry, we never heard of that Genre</h1>
     <h2>Double check, but you might want to create it</h2>
 
