@@ -1,4 +1,6 @@
-<form method='post'>
-  <input name='username'>
-  <input type='submit' value='login'>
-</form>
+<%= flash[:notice] %>
+
+<%= form_tag(login_path) do %>
+  <%= text_field_tag :username %>
+  <%= submit_tag "Login" %>
+<% end %>

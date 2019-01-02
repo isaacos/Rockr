@@ -1,5 +1,5 @@
 class MusiciansController < ApplicationController
-
+  skip_before_action :authorized, only: [:new, :create]
   def new
     @musician = Musician.new
   end
@@ -17,11 +17,11 @@ class MusiciansController < ApplicationController
   end
 
   def edit
-    @musician = Musician.find(params[:id])
+    @musician = Musician.find(session[:musician_id])
   end
 
   def update
-    @musician = Musician.find(params[:id])
+    @musician = Musician.find(session[:musician_id])
     @musician.update(musician_params)
     if @musician.valid?
       @musician.instrument_capitalize
@@ -35,6 +35,10 @@ class MusiciansController < ApplicationController
 
   def show
     @musician = Musician.find(params[:id])
+  end
+
+  def destroy
+    @musician = Musician.find(session[:musician_id])
   end
 
   def index
