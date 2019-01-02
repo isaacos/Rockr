@@ -10,6 +10,7 @@ class BandsController < ApplicationController
   end
 
   def edit
+    @musician = Musician.find(session[:musician_id])
     @band = Band.find(params[:id])
   end
 
