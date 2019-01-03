@@ -17,11 +17,14 @@ class MusiciansController < ApplicationController
   end
 
   def edit
-    @musician = Musician.find(session[:musician_id])
+    @musician = Musician.find(params[:id])
+    unless @musician.id == session[:musician_id]
+      redirect_to musician_path(@musician)
+    end
   end
 
   def update
-    @musician = Musician.find(session[:musician_id])
+    @musician = Musician.find(params[:id])
     @musician.update(musician_params)
     if @musician.valid?
       @musician.instrument_capitalize

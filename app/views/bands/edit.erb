@@ -1,13 +1,34 @@
-
-<% if @band.musicians.include?(@musician) %>
-  <%= form_for @band do |f| %>
-    <%= f.label :band_name %>
-    <%= f.text_field :band_name %>
-    <%= f.label :tours %>
-    <%= f.check_box :tours %>
-    <%= f.label :logo %>
-    <%= f.text_field :logo %>
-    <%= f.collection_check_boxes :musician_ids, Musician.all, :id, :name %>
-    <%= f.submit "Make Ya Band" %>
-  <% end %>
+<% if @band.musicians.include?(current_musician) %>
+  <div class="container">
+    <div class="card bg-dark">
+      <div class="p-3 mb-2 bg-dark text-white">
+        <%= form_for @band do |f| %>
+          <div class="card-header"> <h3> <%= f.label :band_name %></h3>
+            <%= f.text_field :band_name %> </div>
+            <%= f.label :tours %>
+            <%= f.check_box :tours %>
+            <%= f.label :logo %>
+            <%= f.text_field :logo %>
+              <div class="card bg-dark">
+                <div class="card-header">
+                  <h6> Musicians</h6>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Musicians for ya band
+                  </button>
+                  <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                    <%= f.collection_check_boxes(:musician_ids, @addable_musicians, :id, :name) do |musician|%>
+                      <%= musician.label class: 'dropdown-item bg-dark' do %>
+                          <%= musician.check_box + ' ' + musician.text %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div><br>
+                <%= f.submit "Make Ya Band" %>
+            <% end %>
+                </div>
+        </div>
+      </div>
+    </div>
 <% end %>

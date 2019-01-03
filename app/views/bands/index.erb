@@ -5,11 +5,33 @@
     <title></title>
   </head>
   <body>
-
-    <%  @bands.each do |band|%>
-    <%= link_to band.band_name, band_path(band) %>
-    <%= band.average_rating %>
-    <% end %>
-
+    <div class="row">
+      <div class="container scroll">
+        <div class="card bg-dark" >
+          <div class="card-header">
+            <h3>Bands</h3>
+            <p>average rating</p>
+            <div class="right">
+              <a href="/bands/new">Make ya own Band!!!!</a>
+            </div>
+          </div>
+            <div class="p-3 mb-2 bg-dark text-white">
+              <ul>
+                <%  @bands.each do |band|%>
+                  <li><%= link_to band.band_name, band_path(band) %>
+                        <%if band.reviews.count > 0  %>
+                          <%= band.average_rating %>
+                        <% else %>
+                          <a><%= "N/A" %></a>
+                        <% end %>
+                        <% if band.musicians.include?(current_musician) %>
+                          <%= link_to 'Edit', edit_band_path(band), class: "btn btn-secondary btn-sm" %>
+                        <% end %>
+                    <% end %></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

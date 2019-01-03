@@ -5,7 +5,12 @@ class GenresController < ApplicationController
 
   def create
     @genre = Genre.create(genre_params)
-    redirect_to genre_path(@genre)
+    if @genre.valid?
+      redirect_to genre_path(@genre)
+    else
+      @errors = @genre.errors.full_messages
+      render :new
+    end
   end
 
   def index

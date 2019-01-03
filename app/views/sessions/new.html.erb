@@ -1,6 +1,12 @@
 <%= flash[:notice] %>
-
-<%= form_tag(login_path) do %>
-  <%= text_field_tag :username %>
-  <%= submit_tag "Login" %>
-<% end %>
+<div class="container">
+  <div class="card bg-dark" >
+    <div class="p-3 mb-2 bg-dark text-white">
+      <%= form_tag(login_path) do %>
+        <%= text_field_tag :username, '', class: 'form-control align-items-center'%>
+        <%= submit_tag "Login", class: 'btn btn-secondary btn-lg' %>
+      <% end %>
+      <%= link_to "Make an Account", new_musician_path %>
+    </div>
+  </div>
+</div>

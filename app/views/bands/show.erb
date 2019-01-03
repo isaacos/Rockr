@@ -1,28 +1,66 @@
-<%= @band.band_name %>
-<%= @band.tours %>
-<%= @band.logo %>
-
-<% @band.musicians.each do |musician| %>
-<%= link_to musician.name, musician_path(musician) %>
-<% end %>
-
-<ul>
-  <% if @errors %>
-  <% @errors.each do |error| %>
-  <li><%= error %></li>
-  <% end %>
-  <% end %>
-</ul>
-
-<%= form_for @review do |f| %>
-  <%=f.collection_select :band_id, [@band], :id, :band_name%>
-  <%= f.number_field :stars, :step => 0.5 %>
-  <%= f.text_field :comment %>
-  <%= f.submit %>
-<% end %>
 
 
-<% @band.reviews.each do |review| %>
-  <%= review.stars %><br>
-  <%= review.comment %><br>
-<% end %>
+<div class="container">
+  <div class="card bg-dark">
+    <div class="p-3 mb-2 bg-dark text-white">
+      <div class="card-header"> <h3><%= @band.band_name %></h3> </div>
+        <%if @band.tours %>
+              <p>  <%= "We Tour" %> </p>
+        <% end %>
+        <%= @band.logo %>
+        <div class="card bg-dark">
+          <div class="card-header">
+            <h6> Musicians</h6>
+          </div>
+          <% @band.musicians.each do |musician| %>
+              <%= link_to musician.name + " - #{musician.instrument}" , musician_path(musician) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <ul>
+      <% if @errors %>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+<div class="container">
+  <div class="card bg-dark">
+    <div class="p-3 mb-2 bg-dark text-white">
+      <h3>Write a Review</h3>
+      <%= form_for @review do |f| %>
+        <%=f.hidden_field :band_id, band_id: @band.id%>
+        <a>Number of Stars</a>
+        <%= f.number_field :stars, :step => 0.5 %>
+        <a>Comment</a>
+        <%= f.text_field :comment %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card bg-dark">
+    <div class="p-3 mb-2 bg-dark text-white">
+      <h3>Comments</h3>
+
+      <div class="shorter scroll">
+        <% @band.reviews.each do |review| %>
+          <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="p-3 mb-2 bg-dark text-white">
+            <%= review.stars %><br>
+            <%= review.comment %><br>
+            </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

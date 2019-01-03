@@ -12,4 +12,12 @@ class Band < ApplicationRecord
     end
     rating_array.inject(:+)/rating_array.length
   end
+
+  def musicians_not_in_band
+    bands_musicians = self.musicians
+    all_musicians = Musician.all
+      all_musicians.select do |musician|
+        bands_musicians.exclude?(musician)
+      end
+  end
 end
