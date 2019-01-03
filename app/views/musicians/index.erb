@@ -6,17 +6,47 @@
   </head>
   <body>
 
-    <% @musicians.each do |musician| %>
-    <%= link_to musician.name, musician_path(musician) %><br>
-    <% end %><br>
 
-    <h3>Search by</h3>
+  <div class="container">
+    <div class="card bg-dark">
+      <div class="p-3 mb-2 bg-dark text-white">
+        <div class="search">
+          <h3>Search by</h3>
+          <%= form_tag(musicians_path, method: :get) do %>
+          <a> Instrument <%= text_field_tag :instrument_search%></a>
+          <a> Genre <%= select :genre, :genre_search, Genre.all.collect {|p| [ p.genre_name]}, {include_blank: true}%></a>
+          <%= submit_tag 'Search'  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <%= form_tag(musicians_path, method: :get) do %>
-  Instrument <%= text_field_tag :instrument_search%>
-  Genre <%= select :genre, :genre_search, Genre.all.collect {|p| [ p.genre_name]}, {include_blank: true}%>
-  <%= submit_tag 'Search'  %>
-<% end %>
+
+  <!-- <div class="moved-right"> -->
+    <div class="container">
+
+
+    <div class="col-6 scroll">
+
+      <div class="card bg-dark" >
+        <div class="card-header"><h3>Musicians</h3></div>
+
+          <div class="p-3 mb-2 bg-dark text-white">
+
+            <ul>
+              <% @musicians.each do |musician| %>
+                <li><%= link_to musician.name, musician_path(musician) %><br></li>
+              <% end %><br>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
 
 
   </body>

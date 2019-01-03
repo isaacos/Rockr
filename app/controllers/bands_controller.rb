@@ -12,6 +12,8 @@ class BandsController < ApplicationController
   def edit
     @musician = Musician.find(session[:musician_id])
     @band = Band.find(params[:id])
+    @addable_musicians = @band.musicians_not_in_band
+    @addable_musicians << current_musician
   end
 
   def update

@@ -1,7 +1,18 @@
-<%= @musician.name %>
 
-<%= @musician.instrument %>
+<div class="container">
 
-<%= @musician.description %>
+  <div class="card bg-dark">
+    <div class="p-3 mb-2 bg-dark text-white">
 
-<%= @musician.time_for_music %>
+      <div class="card-header"><h3><%= @musician.name %> </h3></div>
+
+        <p>Plays: <%= @musician.instrument %></p>
+
+        <p>Description: <%= @musician.description %></p>
+
+        <p>Able to devote <%= @musician.time_for_music %> hours a week for music</p>
+
+
+      </div>
+    </div>
+  </div>

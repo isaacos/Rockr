@@ -14,3 +14,73 @@
  *= require_self
  */
 @import "bootstrap";
+
+body, html {
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1511814667876-840c7b48d0e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container{
+  margin-top: 2%;
+  margin-bottom: 2%;
+
+}
+
+.scroll {
+    max-height: 70%;
+    overflow-y: auto;
+}
+
+.shorter {
+  max-height: 21vh;
+}
+
+.row{
+  margin-left: 11%;
+  margin-right: 11%;
+}
+
+.col-12 {
+  margin-left: 9%;
+}
+
+.col-6 {
+  padding-left: 0px;
+}
+
+.login {
+  height: 100%;
+}
+
+ul {
+
+  columns: 2;
+}
+
+h3 {
+  color: #b6484b;
+}
+
+h6 {
+  color: #b6484b;
+}
+
+p {
+    color: #b6484b;
+}
+
+card-header {
+  color: #b6484b;
+}
+
+
+.search {
+  color: #b6484b;
+}
+
+.small {
+  height: 5vh;
+}
