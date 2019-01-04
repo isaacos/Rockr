@@ -9,6 +9,7 @@ class MusiciansController < ApplicationController
     if @musician.valid?
       @musician.instrument_capitalize
       @musician.save
+      session[:musician_id] = @musician.id
       redirect_to musician_path(@musician)
     else
       @errors = @musician.errors.full_messages

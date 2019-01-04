@@ -6,20 +6,30 @@ class BandsController < ApplicationController
 
   def create
     @band = Band.create(band_params)
-    redirect_to band_path(@band)
+    if @band.valid?
+      redirect_to band_path(@band)
+    else
+      @errors = @band.errors.full_messages
+      render :new
+    end
   end
 
   def edit
     @musician = Musician.find(session[:musician_id])
     @band = Band.find(params[:id])
-    @addable_musicians = @band.musicians_not_in_band
-    @addable_musicians << current_musician
+    @addable_musicians = Musician.all
+
   end
 
   def update
     @band = Band.find(params[:id])
     @band.update(band_params)
-    redirect_to band_path(@band)
+    if @band.valid?
+      redirect_to band_path(@band)
+    else
+      @errors = @band.errors.full_messages
+      render :edit
+    end
   end
 
   def show

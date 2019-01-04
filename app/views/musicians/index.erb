@@ -13,9 +13,9 @@
         <div class="search">
           <h3>Search by</h3>
           <%= form_tag(musicians_path, method: :get) do %>
-          <a> Instrument <%= text_field_tag :instrument_search%></a>
+          <a> Instrument <%= text_field_tag :instrument_search, '', class:"form-control"%></a>
           <a> Genre <%= select :genre, :genre_search, Genre.all.collect {|p| [ p.genre_name]}, {include_blank: true}%></a>
-          <%= submit_tag 'Search'  %>
+          <%= submit_tag 'Search', class: "btn btn-secondary btn-sm"  %>
           <% end %>
         </div>
       </div>

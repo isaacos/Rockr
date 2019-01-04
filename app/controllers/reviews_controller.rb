@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
       redirect_to band_path(@review.band)
     else
 
-      @errors = @review.errors.full_messages
+      flash[:error] = @review.errors.full_messages
       redirect_to band_path(@review.band)
     end
   end

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :genres
-  resources :bands
-  resources :musicians
+  resources :reviews, only: [:create]
+  resources :genres, except: :delete
+  resources :bands, except: :delete
+  resources :musicians, except: :delete
 
   get "/login", to: "sessions#new", as: 'login'
   post "/login", to: "sessions#create"

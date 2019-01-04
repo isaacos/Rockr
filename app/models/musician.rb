@@ -6,6 +6,8 @@ class Musician < ApplicationRecord
 
   validates :name, presence: true
   validates :instrument, presence: true
+  validates :time_for_music, presence: true
+  validates :time_for_music, numericality: { :only_integer => true, :greater_than_or_equal_to => 0 }
 
   def instrument_capitalize
     instrument = self.instrument.split.map(&:capitalize).join(' ')

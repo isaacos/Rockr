@@ -4,14 +4,25 @@
   <div class="card bg-dark">
     <div class="p-3 mb-2 bg-dark text-white">
 
-      <div class="card-header"><h3><%= @musician.name %> </h3></div>
+      <div class="card-header"><h3><%= @musician.name %> </h3>
+        <% if @musician.id == session[:musician_id] %>
+          <a>   <%= link_to "Edit", edit_musician_path(@musician),class: "btn btn-secondary btn-sm" %> </a>
+        <% end %>
+      </div>
 
         <p>Plays: <%= @musician.instrument %></p>
 
         <p>Description: <%= @musician.description %></p>
 
         <p>Able to devote <%= @musician.time_for_music %> hours a week for music</p>
-
+        <div class="card-header">
+          <h6>Genres played</h6>
+        </div>
+        <ul>
+          <% @musician.genres.each do |genre| %>
+            <li><%=link_to genre.genre_name, genre_path(genre)%></li>
+          <% end %>
+        </ul>
 
       </div>
     </div>

@@ -23,12 +23,12 @@
       <div class="p-3 mb-2 text-white">
           <%= form_for @genre do |f| %>
             <div class="card-header"> <h3><%= f.label :genre_name %>
-              <%= f.text_field :genre_name %>
+              <%= f.text_field :genre_name, class:"form-control" %>
             </h3> </div>
             <p><%= f.label :description %>
-            <%= f.text_field :description %>
+            <%= f.text_area :description, class:"form-control"%>
             </p>
-            <%= f.submit "Make the Genre" %>
+            <%= f.submit "Make the Genre", class: "btn btn-secondary btn-sm" %>
           <% end %>
         </div>
       </div>

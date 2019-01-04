@@ -21,13 +21,17 @@
   </div>
 
 
-    <ul>
-      <% if @errors %>
-        <% @errors.each do |error| %>
-          <li><%= error %></li>
+<% if flash[:error] %>
+  <div class="container">
+    <div class="text-white bg-danger mb-3" >
+      <ul>
+        <% flash[:error].each do |error| %>
+          <li><h1><%= error %></h1><br></li>
         <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
+  </div>
+<% end %>
 
 <div class="container">
   <div class="card bg-dark">
@@ -36,9 +40,9 @@
       <%= form_for @review do |f| %>
         <%=f.hidden_field :band_id, band_id: @band.id%>
         <a>Number of Stars</a>
-        <%= f.number_field :stars, :step => 0.5 %>
+        <%= f.number_field :stars, :step => 0.5, class:"form-control" %>
         <a>Comment</a>
-        <%= f.text_field :comment %>
+        <%= f.text_field :comment, class:"form-control" %>
         <%= f.submit %>
       <% end %>
     </div>

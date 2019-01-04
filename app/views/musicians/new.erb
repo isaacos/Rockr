@@ -16,26 +16,26 @@
     <div class="p-3 mb-2 bg-dark text-white">
       <%= form_for @musician do |f| %>
         <div class="card-header"> <h3><%= f.label :name %>
-        <%= f.text_field :name %></h3></div>
+        <%= f.text_field :name, class:"form-control" %></h3></div>
         <p><%= f.label :instrument %>
-        <%= f.text_field :instrument %></p>
+        <%= f.text_field :instrument, class:"form-control" %></p>
         <p><%= f.label :description %>
-        <%= f.text_area :description %></p>
+        <%= f.text_area :description, class:"form-control" %></p>
         <p>Hours per Week for music
-        <%= f.number_field :time_for_music %></p>
+        <%= f.number_field :time_for_music, class:"form-control" %></p>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Genres you play
           </button>
-          <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu btn btn-secondary btn-sm" aria-labelledby="dropdownMenuButton">
             <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genre_name) do |genre|%>
-              <%= genre.label class: 'dropdown-item bg-dark' do %>
+              <%= genre.label class: 'dropdown-item btn btn-secondary btn-sm' do %>
                <%= genre.check_box + ' ' + genre.text%>
               <% end %>
             <% end %>
           </div>
         </div><br>
-        <%= f.submit "Submit" %>
+        <%= f.submit "Submit", class: "btn btn-secondary btn-sm" %>
       <% end %>
     </div>
   </div>

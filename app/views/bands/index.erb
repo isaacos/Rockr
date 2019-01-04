@@ -20,7 +20,7 @@
                 <%  @bands.each do |band|%>
                   <li><%= link_to band.band_name, band_path(band) %>
                         <%if band.reviews.count > 0  %>
-                          <%= band.average_rating %>
+                          <%= band.average_rating.round(1) %>
                         <% else %>
                           <a><%= "N/A" %></a>
                         <% end %>

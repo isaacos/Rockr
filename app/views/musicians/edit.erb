@@ -1,21 +1,42 @@
-<ul>
 <% if @errors %>
+<div class="container">
+
+<div class="text-white bg-danger mb-3" >
+  <ul>
   <% @errors.each do |error| %>
-    <li><%= error %></li>
+    <li><h1><%= error %></h1><br></li>
   <% end %>
-<% end %>
 </ul>
-
-<%= form_for @musician do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :instrument %>
-  <%= f.text_field :instrument %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :time_for_music %>
-  <%= f.number_field :time_for_music %>
-  <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name %>
-  <%= f.submit "Submit" %>
-
+  </div>
+</div>
 <% end %>
+
+<div class="container">
+  <div class="card bg-dark">
+    <div class="p-3 mb-2 bg-dark text-white">
+      <%= form_for @musician do |f| %>
+        <div class="card-header"> <h3><%= f.label :name %>
+        <%= f.text_field :name, class:"form-control" %></h3></div>
+        <p><%= f.label :instrument %>
+        <%= f.text_field :instrument, class:"form-control" %></p>
+        <p><%= f.label :description %>
+        <%= f.text_area :description, class:"form-control" %></p>
+        <p>Hours per Week for music
+        <%= f.number_field :time_for_music, class:"form-control" %></p>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Genres you play
+          </button>
+          <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+            <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genre_name) do |genre|%>
+              <%= genre.label class: 'dropdown-item bg-dark' do %>
+               <%= genre.check_box + ' ' + genre.text%>
+              <% end %>
+            <% end %>
+          </div>
+        </div><br>
+        <%= f.submit "Submit", class: "btn btn-secondary btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+</div>

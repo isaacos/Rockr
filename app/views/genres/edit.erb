@@ -1,0 +1,28 @@
+<% if @errors %>
+<div class="container">
+
+<div class="text-white bg-danger mb-3" >
+  <ul>
+  <% @errors.each do |error| %>
+    <li><h1><%= error %></h1><br></li>
+  <% end %>
+</ul>
+  </div>
+</div>
+<% end %>
+
+<div class="container">
+<div class="card bg-dark">
+  <div class="p-3 mb-2 text-white">
+      <%= form_for @genre do |f| %>
+        <div class="card-header"> <h3><%= f.label :genre_name %>
+          <%= f.text_field :genre_name, class:"form-control" %>
+        </h3> </div>
+        <p><%= f.label :description %>
+        <%= f.text_area :description, class:"form-control" %>
+        </p>
+        <%= f.submit "Save Edit", class: "btn btn-secondary btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+</div>
